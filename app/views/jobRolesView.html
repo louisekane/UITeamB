@@ -1,0 +1,30 @@
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<h2>List of Job Roles</h2> 
+ 
+{% if jobRoles and jobRoles.length > 0 %} 
+{% set jobRolesrows = [] %} 
+{% for jobRole in jobRoles %} 
+{% set jobRolesrows = (jobRolesrows.push([{ text: jobRole.name }]), jobRolesrows) %} 
+{% endfor %} 
+{{govukTable({ 
+    head: [ { text: "Job Role" }], 
+    rows: jobRolesrows }) 
+}} 
+{% else %}
+There are no Job Roles. 
+{% endif %}
+
+{{ govukButton({
+  text: "Home",
+  href: "http://localhost:3000/home"
+}) }}
+
+{% endblock %}
+
