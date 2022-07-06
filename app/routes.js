@@ -5,7 +5,7 @@ const jobRoleData = require('./jobRoleData.js')
 router.get('/jobRoles', async (req, res) => {
 
     res.render('jobRolesView', {
-      jobRoles: await jobRoleData.getJobRole()
+      jobRoles: await jobRoleData.getJobRoles()
     }
     ); 
   
