@@ -21,7 +21,7 @@ describe('jobRoleData', function () {
         var mock = new MockAdapter(axios); 
         mock.onGet('http://localhost:8080/api/job-roles').reply(500);
         var error = await jobRoleData.getJobRoles()
-        expect(error.message).to.equal('Could not get job roles')
+        expect(error.message).to.equal('Could not get a response from the API with the job roles list')
     })
     
     })
