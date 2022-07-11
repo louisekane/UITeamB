@@ -11,4 +11,8 @@ router.get('/jobRoles', async (req, res) => {
   
   });
 
+router.get('/home', (req, res) => {
+  res.render('homeView');
+});
+
 module.exports = router
