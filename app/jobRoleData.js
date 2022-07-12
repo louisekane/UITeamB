@@ -5,9 +5,7 @@ exports.getJobRoles = async () => {
         const jobRoleResponse = await axios.get('http://localhost:8080/api/job-roles')
         return jobRoleResponse.data
       } catch (e) {
-        console.log(e)
         return new Error('Could not get a response from the API with the job roles list')
-
       }
   }
   
