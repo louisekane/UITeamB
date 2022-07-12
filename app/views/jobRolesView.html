@@ -11,10 +11,10 @@
 {% if jobRoles and jobRoles.length > 0 %} 
 {% set jobRolesrows = [] %} 
 {% for jobRole in jobRoles %} 
-{% set jobRolesrows = (jobRolesrows.push([{ text: jobRole.name }, { text: jobRole.specification }]), jobRolesrows) %} 
+{% set jobRolesrows = (jobRolesrows.push([{ text: jobRole.name }, { text: jobRole.specification },{ text: jobRole.capability }]), jobRolesrows) %} 
 {% endfor %} 
 {{govukTable({ 
-    head: [ { text: "Job Role" }, { text: "Specification" }], 
+    head: [ { text: "Job Role" }, { text: "Specification" }, { text: "Capability" }], 
     rows: jobRolesrows }) 
 }} 
 {% else %}
