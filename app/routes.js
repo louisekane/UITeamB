@@ -6,6 +6,6 @@ const router = express.Router()
 module.exports = router
 
 router.post('/registeruser', async (req, res) => {
-    res.render('/registeruser' { } )
+    res.render('/registeruser', { } )
     
     });
