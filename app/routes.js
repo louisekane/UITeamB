@@ -1,10 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const userdata = require('./userdata')
+const jobRoleData = require('./jobRoleData.js')
 
-// Add your routes here - above the module.exports line
-
-module.exports = router
+router.get('/jobRoles', async (req, res) => {
+    res.render('jobRolesView', {
+      jobRoles: await jobRoleData.getJobRoles()
+    }
+    ); 
+});
 
 router.post('/registeruser' , async (req, res) => {
     var email = req.body.email;
@@ -22,4 +26,4 @@ router.get('registration'), async (req, res) => {
     res.render("registration");
 };
 
-
+module.exports = router

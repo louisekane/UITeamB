@@ -15,6 +15,8 @@
   "dependencies": {
     "acorn": "^8.5.0",
     "ansi-colors": "^4.1.1",
+    "axios": "^0.24.0",
+    "axios-mock-adapter": "^1.21.1",
     "body-parser": "^1.14.1",
     "browser-sync": "^2.27.10",
     "chai": "^4.3.6",
