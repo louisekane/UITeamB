@@ -13,7 +13,7 @@
     }
     </script>
 
-    <form action="/api/registeruser" method="post" onsubmit="return checkPassword(this)">
+    <form action="/registeruser" method="post" onsubmit="return checkPassword(this)">
         
         <label for="email">Email:</label>
         <input type="email" name="email" value="{{email}}" pattern=".+@kainos\.com" title="Please use a valid Kainos email address."> <!-- Input type email to validate proper email format-->

@@ -5,6 +5,8 @@ const util = require('util')
 
 const db = wrapDB(dbconfig)
 
+
+
 function wrapDB(dbconfig) {
     const pool = mysql.createPool(dbconfig)
     return {
@@ -22,7 +24,7 @@ function wrapDB(dbconfig) {
   // Check this method 
   exports.createUser = async (newUser) => {
     try {
-      const usersResponse = await axios.post('http://localhost:8080/api/registeruser', { "email": newUser.email, "password": newUser.password })
+      const usersResponse = await axios.post('http://localhost:8080/api/registeruser', { "user":newUser })
       return usersResponse
     } catch (e) {
       return new Error('Error creating user.')
