@@ -9,39 +9,12 @@
 
 {% block content %}
 
-
-    <script>
-    function checkPassword(str)
-    {
-        var re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/; 
-        return re.test(str);
-    }
-    </script>
-
-    <form action="/registeruser" method="post">
-        
-        <label for="email">Email:</label>
-        <input type="email" name="email" value="{{email}}" pattern=".+@kainos\.com" title="Please use a valid Kainos email address." required> <!-- Input type email to validate proper email format-->
-        
-        <br><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" name="password" value="{{password}}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{9,}" title="Password must contain more than 8 characters, one upper case and lower case letter and one special character" required> <!-- Pattern regex for password requirements -->
-        
-        <br><br>
-
-        <label for="role">Role:</label>
-        <select name="role" id="role">
-            <option value="employee">Employee</option>
-            <option value="admin">Admin</option>
-        </select>
-
-        <input type="submit" value="Submit">
-    
-    </form> 
-
     {% from "govuk/components/input/macro.njk" import govukInput %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+    {% if errormessage %}
+        <div class="govuk-error-message">{{ errormessage }}</div>
+    {% endif %}
     
     <form action="/registeruser" method="post">
 

@@ -1,0 +1,15 @@
+module.exports.validateUser = function (user) {
+    if (user.email == null || user.email.trim().length === 0) {
+        return "E-Mail must be provided"
+    }
+
+    if (user.password == null || user.password.trim().length === 0) {
+        return "Password must be provided"
+    }
+
+    if (user.role == null || user.role.trim().length === 0) {
+        return "Please select a role"
+    }
+
+    return null
+}
