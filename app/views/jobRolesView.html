@@ -14,13 +14,15 @@
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Job Role</th>
       <th scope="col" class="govuk-table__header">Specification</th>
+      <th scope="col" class="govuk-table__header">Specification Link</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
   {% for jobRole in jobRoles %}
     <tr class="govuk-table__row">
       <td id="{{loop.index}}" class="govuk-table__cell">{{jobRole.name}}</td>
-      <td class="govuk-table__cell"><a href={{jobRole.specLink}} target="_blank">{{jobRole.specification}}</a></td>
+      <td class="govuk-table__cell">{{jobRole.specification}}</td>
+      <td class="govuk-table__cell"><a href={{jobRole.specLink}} target="_blank">View Specification</a></td>
     </tr>
   {% endfor %}
   </tbody>
