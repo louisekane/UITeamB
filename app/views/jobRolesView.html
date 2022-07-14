@@ -7,16 +7,26 @@
 
 {% block content %}
 <h2>List of Job Roles</h2> 
- 
+
 {% if jobRoles and jobRoles.length > 0 %} 
-{% set jobRolesrows = [] %} 
-{% for jobRole in jobRoles %} 
-{% set jobRolesrows = (jobRolesrows.push([{ text: jobRole.name }]), jobRolesrows) %} 
-{% endfor %} 
-{{govukTable({ 
-    head: [ { text: "Job Role" }], 
-    rows: jobRolesrows }) 
-}} 
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Job Role</th>
+      <th scope="col" class="govuk-table__header">Specification</th>
+      <th scope="col" class="govuk-table__header">Specification Link</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+  {% for jobRole in jobRoles %}
+    <tr class="govuk-table__row">
+      <td id="{{loop.index}}" class="govuk-table__cell">{{jobRole.name}}</td>
+      <td class="govuk-table__cell">{{jobRole.specification}}</td>
+      <td class="govuk-table__cell"><a href={{jobRole.specLink}} target="_blank">View Specification</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
 {% else %}
 There are no Job Roles. 
 {% endif %}
@@ -25,6 +35,7 @@ There are no Job Roles.
   text: "Home",
   href: '/home'
 }) }}
-
 {% endblock %}
+
+
 
