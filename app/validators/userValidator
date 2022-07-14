@@ -1,6 +1,12 @@
+const passwordRegex = RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{9,}$/)
+
 module.exports.validateUser = function (user) {
     if (user.email == null || user.email.trim().length === 0) {
         return "E-Mail must be provided"
+    }
+
+    if (!passwordRegex.test(user.password)) {
+        return "Password must be more than 8 caracters, contain 1 upper case letter, 1 lower case letter, and a special character"
     }
 
     if (user.password == null || user.password.trim().length === 0) {

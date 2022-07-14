@@ -17,16 +17,14 @@ router.post('/registeruser' , async (req, res) => {
     if (error) {
         res.locals.errormessage = error
         return res.render('registration', req.body);
-    } else {
-        console.log('Valid Pass!')
     }
 
     try {
         var newUser = req.body;
-        userdata.createUser(newUser);
+        await userdata.createUser(newUser);
         res.redirect('/login');
     } catch (e) {
-        res.locals.errormessage = "Failed to submit form: " + e.message
+        res.locals.errormessage = e
         res.render('registration', req.body)
     }
 });

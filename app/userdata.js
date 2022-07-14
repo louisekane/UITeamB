@@ -27,7 +27,7 @@ function wrapDB(dbconfig) {
       const usersResponse = await axios.post('http://localhost:8080/api/registeruser', { email: newUser.email, password: newUser.password, role: newUser.role })
       return usersResponse
     } catch (e) {
-      return new Error('Error creating user.')
+      throw 'An error has occured, please try again later.';
     }
   }
 
