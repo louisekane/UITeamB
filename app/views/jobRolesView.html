@@ -12,16 +12,16 @@
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Job Role</th>
-      <th scope="col" class="govuk-table__header">Specification</th>
-      <th scope="col" class="govuk-table__header">Capability</th>
+      <th scope="col" class="govuk-table__header" id = "Job-role">Job Role</th>
+      <th scope="col" class="govuk-table__header" id = "Job-spec">Specification</th>
+      <th scope="col" class="govuk-table__header" id = "Job-cap">Capability</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
   {% for jobRole in jobRoles %}
     <tr class="govuk-table__row">
       <td id="{{loop.index}}" class="govuk-table__cell">{{jobRole.name}}</td>
-      <td class="govuk-table__cell"><a href={{role.sharepoint_url}} target="_blank">{{jobRole.specification}}</a></td>
+      <td class="govuk-table__cell"><a href={{jobRole.specLink}} target="_blank">{{jobRole.specification}}</a></td>
       <td class="govuk-table__cell">{{jobRole.capability}}</td>
     </tr>
   {% endfor %}

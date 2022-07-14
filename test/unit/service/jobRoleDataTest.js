@@ -3,6 +3,12 @@ var MockAdapter = require('axios-mock-adapter');
 var chai = require('chai');  
 const expect = chai.expect;
 const jobRoleData = require('../../../app/jobRoleData');
+const testRole = {
+    name: "RoleTest",
+    specification: "SpecTest",
+    specLink: "LinkTes",
+    capability: "CapaTest"
+}
 
 describe('jobRoleData', function () {
 
@@ -10,7 +16,7 @@ describe('jobRoleData', function () {
     
     it('should return job roles from response', async () => {    
         var mock = new MockAdapter(axios);   
-        const data = ["test"];          
+        const data = [testRole];          
         mock.onGet('http://localhost:8080/api/job-roles').reply(200, data);           
         var results = await jobRoleData.getJobRoles();            
         expect(results).to.deep.equal(data)
