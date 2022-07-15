@@ -14,7 +14,6 @@ router.get('/jobRoles', async (req, res) => {
 });
 
 router.get('/jobResponsibility/:roleId', async (req, res) => {
-  console.log( await jobRoleData.getJobResponsibility(req.params.roleId))
   res.render('jobResponsibility', {
     jobResponsibilty: await jobRoleData.getJobResponsibility(req.params.roleId)
   })
