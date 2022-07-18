@@ -23,7 +23,8 @@
   <tbody class="govuk-table__body">
   {% for jobRole in jobRoles %}
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell"><a href="javascript:window.location.href=window.location.href" onclick="return confirm('This action cannot be undone. Are you sure you want to delete {{ jobRole.name }}?')">DELETE</a></td>
+      <td class="govuk-table__cell"><a href="javascript:window.location.href=window.location.href" 
+        onclick="return confirm('This action cannot be undone. Are you sure you want to delete {{ jobRole.name }}?')" action="/jobRolesAdmin:roleId" method="delete">DELETE</a></td>
 
 
       <td id="{{loop.index}}" class="govuk-table__cell"><a href="jobResponsibility/{{jobRole.roleId}}" target="_blank">{{ jobRole.name }}</a></td>

@@ -18,16 +18,22 @@ router.get('/jobRoles', async (req, res) => {
 });
 
 router.get('/jobResponsibility/:roleId', async (req, res) => {
+  console.log("Testowe211122")
   res.render('jobResponsibility', {
     jobResponsibilty: await jobRoleData.getJobResponsibility(req.params.roleId)
   })
 });
 
 router.get('/jobRolesAdmin', async (req, res) => {
-
   res.render('jobRolesViewAdmin', {
     jobRoles: await jobRoleData.getJobRoles()
   }); 
 });
+
+router.delete('/jobRolesAdmin/:roleId', async (req, res) => {
+  console.log("Testowe222")
+  await jobRoleData.deleteRole(req.params.roleId)
+}
+)
 
 module.exports = router
