@@ -1,0 +1,46 @@
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+<h2>List of Job Roles</h2> 
+
+{% if jobRoles and jobRoles.length > 0 %} 
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Delete role</th>
+      <th scope="col" class="govuk-table__header">Job Role</th>
+      <th scope="col" class="govuk-table__header">Specification</th>
+      <th scope="col" class="govuk-table__header">Specification Link</th>
+      <th scope="col" class="govuk-table__header">Capability</th>
+      <th scope="col" class="govuk-table__header">Band</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+  {% for jobRole in jobRoles %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell"><a href="javascript:window.location.href=window.location.href" onclick="return confirm('This action cannot be undone. Are you sure you want to delete {{ jobRole.name }}?')">DELETE</a></td>
+
+
+      <td id="{{loop.index}}" class="govuk-table__cell"><a href="jobResponsibility/{{jobRole.roleId}}" target="_blank">{{ jobRole.name }}</a></td>
+      <td class="govuk-table__cell">{{jobRole.specification}}</td>
+      <td class="govuk-table__cell"><a href={{jobRole.specLink}} target="_blank">View Specification</a></td>
+      <td class="govuk-table__cell">{{jobRole.capability}}</td>
+      <td class="govuk-table__cell">{{jobRole.band}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+There are no Job Roles. 
+{% endif %}
+
+{{ govukButton({
+  text: "Home",
+  href: '/home'
+}) }}
+{% endblock %}
