@@ -17,15 +17,15 @@ router.post('/registeruser' , async (req, res) => {
     if (error) {
         res.locals.errormessage = error
         return res.render('registration', req.body);
-    }
-
-    try {
-        var newUser = req.body;
-        await userdata.createUser(newUser);
-        res.redirect('/login');
-    } catch (e) {
-        res.locals.errormessage = e
-        res.render('registration', req.body)
+    } else {
+        try {
+            var newUser = req.body;
+            await userdata.createUser(newUser);
+            res.redirect('/login');
+        } catch (e) {
+            res.locals.errormessage = e
+            res.render('registration', req.body)
+        }
     }
 });
 
