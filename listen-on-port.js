@@ -14,23 +14,18 @@ const utils = require('./lib/utils.js')
 var useBrowserSync = config.useBrowserSync.toLowerCase()
 var env = utils.getNodeEnv()
 
-// Certs 
-var certificate = fs.readFileSync( 'security/cert.pem' );
-var key = fs.readFileSync( 'security/cert.key' );
-
-
 utils.findAvailablePort(server, function (port) {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
   if (env === 'production' || useBrowserSync === 'false') {
-    https.createServer({
+    var certificate = fs.readFileSync( 'security/cert.pem' );
+    var key = fs.readFileSync( 'security/cert.key' );
+
+    http.createServer({
       key: key,
       cert: certificate
   }, server).listen(port);
   } else {
-    http.createServer({
-      key: key,
-      cert: certificate
-  }, server).listen(port - 50, function () {
+    server.listen(port - 50, function () {
       browserSync({
         proxy: 'localhost:' + (port - 50),
         port: port,
