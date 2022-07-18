@@ -1,6 +1,5 @@
 const mysql = require('mysql');
 const axios = require('axios');
-const dbconfig = require('../dbconfig.json');
 const util = require('util')
 
 // Check this method 
