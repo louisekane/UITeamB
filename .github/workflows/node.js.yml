@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "S002-Static-Application-Security-Testing-(SAST)" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "S002-Static-Application-Security-Testing-(SAST)" ]
+    branches: [ "main" ]
 
 jobs:
   build:
