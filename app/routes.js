@@ -29,17 +29,9 @@ router.get('/jobRolesAdmin', async (req, res) => {
   }); 
 });
 
-//router.delete('/adminDelete', async (req, res) => {
-//  res.render('jobRolesViewAdmin', {
-//    jobRoles: await jobRoleData.deleteRole(req.params.roleId)
-//  }); 
-//  console.log(req.params.roleId)
-//});
-
 router.get('/adminDelete/:roleId', async (req, res) => {     
-  res.redirect('/jobRolesAdmin') 
-  console.log(req.params.roleId)
   await jobRoleData.deleteRole(req.params.roleId)
+  res.redirect('/jobRolesAdmin')
 });
 
 module.exports = router

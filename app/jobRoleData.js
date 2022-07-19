@@ -19,10 +19,12 @@ exports.getJobResponsibility = async (roleId) => {
 }
 
 exports.deleteRole = async (roleId) => {
-  //const response = await axios.delete('http://localhost:8080/api/delete-role/'+ roleId)
-  console.log("Testowe222")
-  console.log(roleId)
-  //return response.data
+  try{
+    const url = 'http://localhost:8080/api/delete-role/'+ roleId
+    const response = await axios.delete(url)
+  } catch (e) {
+    return new Error('Could not get a response from the API for role delete')
+  }
 }
 
   
