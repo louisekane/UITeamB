@@ -12,7 +12,6 @@ exports.getJobRoles = async () => {
 exports.getJobResponsibility = async (roleId) => { 
   try {  
     const jobRoleResponse = await axios.get('http://localhost:8080/api/job-responsibility/' + roleId)
-    //console.log(jobRoleResponse.data)
     return jobRoleResponse.data
   } catch (e) {
     return new Error('Could not get a response from the API with the job responsibilities list')
@@ -20,8 +19,9 @@ exports.getJobResponsibility = async (roleId) => {
 }
 
 exports.deleteRole = async (roleId) => {
-  const response = await axios.delete('http://localhost:8080/api/delete-role/'+ roleId)
+  //const response = await axios.delete('http://localhost:8080/api/delete-role/'+ roleId)
   console.log("Testowe222")
+  console.log(roleId)
   //return response.data
 }
 
