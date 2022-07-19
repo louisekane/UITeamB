@@ -62,3 +62,18 @@ describe('jobRoleData', function () {
     })
 
 })
+
+describe('jobRoleData', function () {
+
+    describe('deleteRole', function () {
+      
+    it('should throw exception when 500 error returned from axios', async () => {
+        var mock = new MockAdapter(axios); 
+        mock.onGet('http://localhost:8080/api/delete-role/1').reply(500);
+        var error = await jobRoleData.deleteRole(1)
+        expect(error.message).to.equal('Could not get a response from the API endpoint for role delete')
+    })
+    
+    })
+
+})
