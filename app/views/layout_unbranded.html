@@ -7,7 +7,11 @@
 {% block head %}
   <!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
   <!--[if gt IE 8]><!--><link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
-  <img src="/public/images/kainosLogo.png" alt="kainos logo" id="kainos_logo">
+  <div class="govuk-header">
+    <div class="header__top">
+      <img src="/public/images/kainosLogo.png" alt="kainos logo" id="kainos_logo">
+    </div>
+  </div>
 {% endblock %}
 
 {% block header %}{% endblock %}
@@ -26,7 +30,6 @@
   <div class="floatingImage">
     <img src="/public/images/footerImage.webp" id = "footerImageKainos">
   </div>
-  
  <div class="footer__copyrights">Copyright © 2021 Kainos. Registered in NI NI019370</div>
- 
-</div>{% endblock %}
+</div>
+{% endblock %}

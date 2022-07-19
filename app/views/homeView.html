@@ -10,12 +10,11 @@
       <h1 class="govuk-heading-xl">
         Home Page
       </h1>
-      <h2 class="govuk-heading-m">
-        Possible actions:
-      </h2>
-
-      <p><a href="/jobRoles">View job roles table</a></p>
-
     </div>
   </div>
+
+  {{ govukButton({
+    text: "Job Roles",
+    href: '/jobRoles'
+  }) }}
 {% endblock %}a
