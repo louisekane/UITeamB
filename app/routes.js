@@ -51,8 +51,12 @@ router.post('/login-user' , async (req, res) => {
         try {
             var user = req.body;
             var rememberMe = req.body.rememberMe[1];
-            console.log(user.email + " " + user.password);
-            await userdata.loginUser(user, rememberMe);
+            var response = await userdata.loginUser(user, rememberMe);
+
+            console.log(response.data)
+            res.cookie('token', response.data.token, {maxAge: response.data.expiry})
+            res.cookie('token_id', response.data.userId, {maxAge: response.data.expiry})
+
             res.redirect('/homeView');
         } catch (e) {
             res.locals.errormessage = e

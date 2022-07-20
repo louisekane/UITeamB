@@ -15,7 +15,7 @@ exports.createUser = async (newUser) => {
 exports.loginUser = async (user, rememberMe) => {
   var usersResponse = "An error has occurred, please try again later";
   try {
-    usersResponse = await axios.post('http://localhost:8080/api/login-user', { email: user.email, password: user.password, rememberMe: rememberMe })
+    usersResponse = await axios.post('http://localhost:8080/api/login-user', { user: user, rememberMe: rememberMe })
     return usersResponse
   } catch (e) {
     throw e.response.data;
