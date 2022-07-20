@@ -1,5 +1,10 @@
 # UITeamB
 
+Creating a local version of the project
+---
+1. Run "Git clone {repository link}"
+2. Run "Git pull" to bring files up to date 
+
 How to start the application
 ---
 
