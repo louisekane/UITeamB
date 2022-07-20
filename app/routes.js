@@ -23,8 +23,7 @@ router.post('/registeruser' , async (req, res) => {
         return res.render('registration', req.body);
     } else {
         try {
-            var newUser = req.body;
-            await userdata.createUser(newUser);
+            await userdata.createUser(req.body);
             res.redirect('/login');
         } catch (e) {
             res.locals.errormessage = e
