@@ -6,6 +6,5 @@ exports.getCompetencies = async (bandName) => {
         return competenciesResponse.data
       } catch (e) {
          return new Error('Could not get a response from the API with the band competencies')
-
       }
   }

@@ -19,9 +19,8 @@ router.get('/jobRoles', async (req, res) => {
 module.exports = router
 
 router.get('/competencies/:bandName', async (req, res) => {
-  var bandName = req.params.bandName;
   res.render('competenciesView', {
-    competencies: await competencyData.getCompetencies(bandName)
+    competencies: await competencyData.getCompetencies(req.params.bandName)
   }
   ); 
 
