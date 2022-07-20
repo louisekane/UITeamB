@@ -16,7 +16,7 @@ router.get('/jobRoles', async (req, res) => {
 });
 
 router.post('/registeruser' , async (req, res) => {
-    let error = userValidator.validateUser(req.body)
+    let error = userValidator.validateNewUser(req.body)
 
     if (error) {
         res.locals.errormessage = error
@@ -36,5 +36,29 @@ router.post('/registeruser' , async (req, res) => {
 router.get('registration'), async (req, res) => {
     res.render("registration");
 };
+
+router.get('login'), async (req, res) => {
+    res.render("login");
+};
+
+router.post('/login-user' , async (req, res) => {
+    let error = userValidator.validateExistingUser(req.body)
+
+    if (error) {
+        res.locals.errormessage = error
+        return res.render('login', req.body);
+    } else {
+        try {
+            var user = req.body;
+            var rememberMe = req.body.rememberMe[1];
+            console.log(user.email + " " + user.password);
+            await userdata.loginUser(user, rememberMe);
+            res.redirect('/homeView');
+        } catch (e) {
+            res.locals.errormessage = e
+            res.render('login', req.body)
+        }
+    }
+});
 
 module.exports = router

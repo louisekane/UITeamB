@@ -1,8 +1,78 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-<title>Login</title> 
-</head> 
-<body> 
-<h1>Registration successful</h1>
-</body>
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% extends "layout_unbranded.html" %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Log In
+{% endblock %}
+
+{% block content %}
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {% if errormessage %}
+            <div class="govuk-error-message">{{ errormessage }}</div>
+        {% endif %}
+        
+        <form action="/login-user" method="post">
+
+        {% call govukFieldset({
+        legend: {
+            text: "Log In",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+        }
+        }) %}
+        
+        {{ govukInput({
+            label: {
+            text: 'Email'
+            },
+            id: "email",
+            name: "email",
+            type: "email",
+            pattern: ".+@kainos\.com",
+            autocomplete: "email"
+        }) }}
+        
+        {{ govukInput({
+            label: {
+            text: 'Password'
+            },
+            id: "password",
+            name: "password",
+            type: "password",
+            autocomplete: "password"
+        }) }}
+
+
+        {{ govukCheckboxes({
+        idPrefix: "remembeMer",
+        name: "rememberMe",
+        fieldset: {
+            legend: {
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+            }
+        },
+        items: [
+            {
+            value: "true",
+            text: "Remember Me"
+            }
+        ]
+        }) }}
+
+      {{ govukButton({
+        text: "Log In",
+        type: "Submit"
+      }) }}
+
+      </form>
+    {% endcall %}
+
+    {% endblock %}
+
