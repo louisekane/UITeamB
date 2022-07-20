@@ -5,17 +5,16 @@
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="govuk-heading-l">
-        Possible actions:
+      <h1 class="govuk-heading-xl">
+        Home Page
       </h1>
-
-      <p><a href="/jobRoles">View job roles table</a></p>
-
     </div>
   </div>
 
-{% endblock %}
+  {{ govukButton({
+    text: "Job Roles",
+    href: '/jobRoles'
+  }) }}
+{% endblock %}a
