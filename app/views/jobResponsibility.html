@@ -6,12 +6,18 @@
 {% endblock %}
 
 {% block content %}
-  <h2>The {{jobResponsibilty.name}} Responsibilities</h2> 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      The {{jobResponsibilty.name}} Responsibilities
+    </h1>
+  </div>
+</div>
 
-{% if jobResponsibilty.responsibility and jobResponsibilty.responsibility.length > 0 %} 
+{% if jobResponsibilty.responsibilities and jobResponsibilty.responsibilities.length > 0 %} 
 <table class="govuk-table">
   <tbody class="govuk-table__body">
-  {% for resp in jobResponsibilty.responsibility %}
+  {% for resp in jobResponsibilty.responsibilities %}
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">{{resp}}</td>
     </tr>
@@ -19,7 +25,9 @@
   </tbody>
 </table>
 {% else %}
-There are no responsibilities for this job. 
+<h1 class="govuk-heading-m">
+  There are no responsibilities for this job. 
+</h1>
 {% endif %}
 
 {{ govukButton({
