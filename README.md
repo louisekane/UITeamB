@@ -1,6 +1,6 @@
 # UITeamB
 
-How to start the application
+Set Up
 ---
 
 1. Open the terminal
@@ -9,7 +9,7 @@ How to start the application
 4. Navigate to `http://localhost:3000/home` to check the appliction is running
 5. The applcation will only run properly if the API is also running
 
-Tests
+Testing
 ---
 
 1. Run `npm test` to run unit tests
