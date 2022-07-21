@@ -14,14 +14,14 @@
   </div>
 </div>
 
-{# Here we should check information about current user. If its admin (1) then delete column will be visible. Currently Im changing that manually #}
-{% set user = 1 %}
+{# Here we should check information about current user. If its admin then delete column will be visible. Currently Im changing that manually #}
+{% set user = 'Admin' %}
 
 {% if jobRoles and jobRoles.length > 0 %} 
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-        {% if user == 1 %} 
+        {% if user == 'Admin' %} 
         <th scope="col" class="govuk-table__header"> Delete role </th>
         {% endif %}
       <th scope="col" class="govuk-table__header">Job Role</th>
@@ -34,7 +34,7 @@
   <tbody class="govuk-table__body">
   {% for jobRole in jobRoles %}
     <tr class="govuk-table__row">
-        {% if user == 1 %} 
+        {% if user == 'Admin' %} 
         <td id = "deleteOption" class="govuk-table__cell"><a href="/adminDelete/{{jobRole.roleId}}" onclick="return confirm('This action cannot be undone. Are you sure you want to delete role &quot;{{ jobRole.name }}&quot;?')">
           DELETE </a></td>
         {% endif %}
