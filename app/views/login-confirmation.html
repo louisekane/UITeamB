@@ -1,0 +1,51 @@
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% extends "layout_unbranded.html" %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Logged in!
+{% endblock %}
+
+{% block content %}
+
+    {% call govukFieldset({
+    legend: {
+        text: "Logged in!",
+        classes: "govuk-fieldset__legend--l",
+        isPageHeading: true
+    }
+    }) %}
+
+    {% if tokenId %}
+        <p>Logged in as User ID: {{ tokenId }}</p>
+    {% endif %}
+
+    {% if tokenRole %}
+        <p>Role: {{ tokenRole }}</p>
+    {% endif %}
+
+
+    <form action="/logout-user" method="get">
+
+    {{ govukButton({
+        text: "Log Out",
+        type: "Submit"
+      }) }}
+
+    </form>
+
+    <form action="/homeView" method="get">
+
+        {{ govukButton({
+            text: "Home Page",
+            type: "Submit"
+          }) }}
+    
+        </form>
+
+    {% endcall %}
+
+
+{% endblock %}

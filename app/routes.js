@@ -21,7 +21,7 @@ router.get('/jobRoles', async (req, res) => {
 });
 
 router.post('/registeruser' , async (req, res) => {
-    let error = userValidator.validateUser(req.body)
+    let error = userValidator.validateNewUser(req.body)
 
     if (error) {
         res.locals.errormessage = error
@@ -37,9 +37,53 @@ router.post('/registeruser' , async (req, res) => {
     }
 });
 
-router.get('registration', async (req, res) => {
+router.get('/registration', async (req, res) => {
     res.render("registration");
 });
+
+router.get('/login', async (req, res) => {
+    res.render("login");
+});
+
+router.post('/login-user' , async (req, res) => {
+    let error = userValidator.validateExistingUser(req.body)
+
+    if (error) {
+        res.locals.errormessage = error
+        return res.render('login', req.body);
+    } else {
+        try {
+            var user = req.body;
+            var rememberMe = req.body.rememberMe[1];
+            var response = await userdata.loginUser(user, rememberMe);
+
+            res.cookie('token', response.data.token, {maxAge: response.data.expiry})
+            res.cookie('token_id', response.data.userId, {maxAge: response.data.expiry})
+
+            res.redirect('/login-confirmation');
+        } catch (e) {
+            res.locals.errormessage = e
+            res.render('login', req.body)
+        }
+    }
+});
+
+router.get('/logout-user', async (req, res) => {
+    res.clearCookie('token')
+    res.clearCookie('token_id')
+    res.redirect("login");
+});
+
+
+router.get('/login-confirmation', async (req, res) => {
+    if (req.cookies.token && req.cookies.token_id) {
+        var tokenRole = req.cookies.token.split('_')[0];
+        res.render("login-confirmation", {tokenRole: tokenRole, tokenId: req.cookies.token_id});
+    } else {
+        res.redirect('/login');
+    }
+});
+
 
 router.get('/jobResponsibility/:roleId', async (req, res) => {
   res.render('jobResponsibility', {
