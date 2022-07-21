@@ -2,11 +2,8 @@ const express = require('express')
 const router = express.Router()
 const userdata = require('./userdata')
 const jobRoleData = require('./jobRoleData.js')
-<<<<<<< HEAD
 const userValidator = require('./validators/userValidator')
-=======
 const competencyData = require('./competencyData.js')
->>>>>>> main
 
 router.get('/home', (req, res) => {
   res.render('homeView');
