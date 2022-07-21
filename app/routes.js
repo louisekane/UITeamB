@@ -2,7 +2,11 @@ const express = require('express')
 const router = express.Router()
 const userdata = require('./userdata')
 const jobRoleData = require('./jobRoleData.js')
+<<<<<<< HEAD
 const userValidator = require('./validators/userValidator')
+=======
+const competencyData = require('./competencyData.js')
+>>>>>>> main
 
 router.get('/home', (req, res) => {
   res.render('homeView');
@@ -40,6 +44,16 @@ router.get('/jobResponsibility/:roleId', async (req, res) => {
   res.render('jobResponsibility', {
     jobResponsibilty: await jobRoleData.getJobResponsibility(req.params.roleId)
   })
+});
+
+module.exports = router
+
+router.get('/competencies/:bandName', async (req, res) => {
+  res.render('competenciesView', {
+    competencies: await competencyData.getCompetencies(req.params.bandName)
+  }
+  ); 
+
 });
 
 module.exports = router
