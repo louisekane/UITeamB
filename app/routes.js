@@ -9,12 +9,16 @@ router.get('/home', (req, res) => {
 
 router.get('/jobRoles', async (req, res) => {
 
-    res.render('jobRolesView', {
-      jobRoles: await jobRoleData.getJobRoles()
-    }
-    ); 
-  
-  });
+  res.render('jobRolesView', {
+    jobRoles: await jobRoleData.getJobRoles()
+  }); 
+});
+
+router.get('/jobResponsibility/:roleId', async (req, res) => {
+  res.render('jobResponsibility', {
+    jobResponsibilty: await jobRoleData.getJobResponsibility(req.params.roleId)
+  })
+});
 
 module.exports = router
 
