@@ -20,7 +20,7 @@ utils.findAvailablePort(server, function (port) {
     var certificate = fs.readFileSync( 'security/cert.pem' );
     var key = fs.readFileSync( 'security/cert.key' );
 
-    http.createServer({
+    https.createServer({
       key: key,
       cert: certificate
   }, server).listen(port);

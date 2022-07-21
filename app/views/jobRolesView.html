@@ -6,7 +6,13 @@
 {% endblock %}
 
 {% block content %}
-<h2>List of Job Roles</h2> 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Job Roles
+    </h1>
+  </div>
+</div>
 
 {% if jobRoles and jobRoles.length > 0 %} 
 <table class="govuk-table">
@@ -22,17 +28,19 @@
   <tbody class="govuk-table__body">
   {% for jobRole in jobRoles %}
     <tr class="govuk-table__row">
-      <td id="{{loop.index}}" class="govuk-table__cell">{{jobRole.name}}</td>
+      <td id="{{loop.index}}" class="govuk-table__cell"><a href=/jobResponsibility/{{jobRole.roleId}} target="_blank">{{ jobRole.name }}</a></td>
       <td class="govuk-table__cell">{{jobRole.specification}}</td>
       <td class="govuk-table__cell"><a href={{jobRole.specLink}} target="_blank">View Specification</a></td>
       <td class="govuk-table__cell">{{jobRole.capability}}</td>
-      <td class="govuk-table__cell">{{jobRole.band}}</td>
+      <td class="govuk-table__cell"><a href=/competencies/{{jobRole.band}} target="_blank">{{jobRole.band}}</a></td>
     </tr>
   {% endfor %}
   </tbody>
 </table>
 {% else %}
-There are no Job Roles. 
+<h1 class="govuk-heading-m">
+  There are no job roles. 
+</h1>
 {% endif %}
 
 {{ govukButton({
