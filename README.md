@@ -1,10 +1,5 @@
 # UITeamB
 
-Creating a local version of the project
----
-1. Run "Git clone {repository link}"
-2. Run "Git pull" to bring files up to date 
-
 How to start the application
 ---
 
@@ -12,6 +7,7 @@ How to start the application
 2. Run `npm install` to build the application
 3. Start application with `npm start`
 4. Navigate to `http://localhost:3000/home` to check the appliction is running
+5. The applcation will only run properly if the API is also running
 
 Tests
 ---
