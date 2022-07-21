@@ -4,6 +4,10 @@ const userdata = require('./userdata')
 const jobRoleData = require('./jobRoleData.js')
 const userValidator = require('./validators/userValidator')
 
+router.get('/home', (req, res) => {
+  res.render('homeView');
+});
+
 router.get('/jobRoles', async (req, res) => {
     res.render('jobRolesView', {
       jobRoles: await jobRoleData.getJobRoles()
@@ -28,8 +32,14 @@ router.post('/registeruser' , async (req, res) => {
     }
 });
 
-router.get('registration'), async (req, res) => {
+router.get('registration', async (req, res) => {
     res.render("registration");
-};
+});
+
+router.get('/jobResponsibility/:roleId', async (req, res) => {
+  res.render('jobResponsibility', {
+    jobResponsibilty: await jobRoleData.getJobResponsibility(req.params.roleId)
+  })
+});
 
 module.exports = router
