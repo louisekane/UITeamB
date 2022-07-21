@@ -1,6 +1,9 @@
 
 // NPM dependencies
 const browserSync = require('browser-sync')
+const https = require('https')
+const http = require('http')
+const fs = require('fs')
 
 // Local dependencies
 const server = require('./server.js')
@@ -14,7 +17,13 @@ var env = utils.getNodeEnv()
 utils.findAvailablePort(server, function (port) {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
   if (env === 'production' || useBrowserSync === 'false') {
-    server.listen(port)
+    var certificate = fs.readFileSync( 'security/cert.pem' );
+    var key = fs.readFileSync( 'security/cert.key' );
+
+    https.createServer({
+      key: key,
+      cert: certificate
+  }, server).listen(port);
   } else {
     server.listen(port - 50, function () {
       browserSync({

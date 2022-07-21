@@ -1,0 +1,61 @@
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+{% if competencies and competencies.length > 0 %} 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{competencies[0].name}} competencies
+    </h1>
+  </div>
+</div>
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Competency Label</th>
+      <th scope="col" class="govuk-table__header">Competency Body</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+  {% for competency in competencies %}
+    <tr class="govuk-table__row">   
+      {% set headerArray = competency.header | sliceString %}
+      {% set bodyArray = competency.body | sliceString %}
+      <td class="govuk-table__cell" rowspan="{{headerArray.length}}">{{competency.label}}</td>
+      {% if headerArray.length > 0 %}
+        <td class="govuk-table__cell">
+          <p><b>{{ headerArray[0] }}</b></p>
+          <p>{{ bodyArray[0] }}</p>
+        </td>
+      {% endif %}
+    </tr>
+    {% if headerArray.length > 1 %}
+      {% for i in range (1, headerArray.length) %}
+        <tr>
+          <td class="govuk-table__cell">
+            <p><b>{{ headerArray[i] }}</b></p>
+            <p>{{ bodyArray[i] }}</p>
+          </td>
+        </tr>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<h1 class="govuk-heading-m">
+  There are no competencies.  
+</h1>
+{% endif %}
+
+{{ govukButton({
+  text: "Home",
+  href: '/home'
+}) }}
+
+{% endblock %}
