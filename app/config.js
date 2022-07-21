@@ -27,5 +27,4 @@ module.exports = {
 
   // Enable or disable Browser Sync (local development only)
   useBrowserSync: 'true'
-
 }
