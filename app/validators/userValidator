@@ -1,6 +1,6 @@
 const passwordRegex = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{9,}$/)
 
-module.exports.validateUser = function (user) {
+module.exports.validateNewUser = function (user) {
     if (user.email == null || user.email.trim().length === 0) {
         return "E-Mail must be provided"
     }
@@ -15,6 +15,18 @@ module.exports.validateUser = function (user) {
 
     if (user.role == null || user.role.trim().length === 0) {
         return "Please select a role"
+    }
+
+    return null
+}
+
+module.exports.validateExistingUser = function (user) {
+    if (user.email == null || user.email.trim().length === 0) {
+        return "E-Mail must be provided"
+    }
+
+    if (user.password == null || user.password.trim().length === 0) {
+        return "Password must be provided"
     }
 
     return null
