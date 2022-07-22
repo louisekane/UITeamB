@@ -1,5 +1,5 @@
-package UITests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,21 +7,20 @@ import org.testng.Assert;
 
 public class UIHomePage {
     public static void main(String[] args){
-        //path to chromedriver
-        System.setProperty("webdriver.chrome.driver",/* path to chromdriver */);
+        //Setup driver
+        WebDriver driver;
+
+        WebDriverManager.chromedriver().setup();
 
         //Invoking browser
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
 
         driver.get("http://localhost:3000/home");
-
+        HomePage HPage = new HomePage();
         // Verify Home Page title
-        String actualTitle = "Team B";
-        String HomePageTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle,HomePageTitle);
+        HPage.CheckHomePageTitle(driver);
         //check if link is active
-        Assert.assertTrue(driver.findElement(By.linkText("View job roles table")).isEnabled());
-
+        HPage.ChechIfJobRoleLinkIsActice(driver);
 
         driver.quit();
     }
