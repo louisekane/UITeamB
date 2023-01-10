@@ -42,7 +42,7 @@
     "mocha": "^10.0.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.15",
-    "notifications-node-client": "^5.1.0",
+    "notifications-node-client": "^6.0.0",
     "nunjucks": "^3.2.1",
     "portscanner": "^2.1.1",
     "require-dir": "^1.0.0",
